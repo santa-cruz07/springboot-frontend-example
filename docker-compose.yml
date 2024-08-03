@@ -1,0 +1,12 @@
+services:
+  postgres:
+    restart: always
+    container_name: postgres
+    hostname: postgres
+    image: "postgres:latest" # use latest official postgres version
+    env_file:
+      - ./docker/postgres/database.env # configure postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker/postgres/scripts:/docker-entrypoint-initdb.d/
